@@ -1,0 +1,72 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.tencent</groupId>
+	<artifactId>comDemo</artifactId>
+	<packaging>war</packaging>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>comDemo Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<!-- 1.添加腾讯云指定的仓库地址 -->
+	<repositories>
+		<repository>
+			<id>bintray-qcloud-maven-repo</id>
+			<name>qcloud-maven-repo</name>
+			<url>https://dl.bintray.com/qcloud/maven-repo/</url>
+			<layout>default</layout>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- 2.腾讯云sdk的 -->
+		<dependency>
+			<groupId>com.qcloud</groupId>
+			<artifactId>cos_api</artifactId>
+			<version>5.5.3</version>
+		</dependency>
+		<!-- 2.获取临时秘钥的 -->
+		<dependency>
+			<groupId>com.tencent.cloud</groupId>
+			<artifactId>cos-sts-java</artifactId>
+			<version>3.0.3</version>
+		</dependency>
+		<!-- 3.json处理包的 -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160810</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<finalName>comDemo</finalName>
+			
+       <plugins>
+		<!-- 修改maven默认的JRE编译版本 防止maven update project之后 把jre配置的成默认的1.5 根据自己的情况更改为1.7或1.8 -->
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>2.3.2</version>
+			<configuration>
+				<source>1.8</source>
+				<target>1.8</target>
+			</configuration>
+		</plugin>
+	</plugins>
+	
+	</build>
+</project>
